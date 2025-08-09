@@ -1,0 +1,20 @@
+---
+- name: Test F5 Connection
+  hosts: f5
+  gather_facts: false
+  collections:
+    - f5networks.f5_bigip
+
+  tasks:
+    - name: Get device info
+      f5networks.f5_bigip.bigip_device_info:
+        provider:
+          server: "{{ ansible_host }}"
+          user: "{{ ansible_user }}"
+          password: "{{ ansible_password }}"
+          validate_certs: no
+      register: result
+
+    - name: Show version
+      ansible.builtin.debug:
+        var: result.version

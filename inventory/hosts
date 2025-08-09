@@ -1,0 +1,2 @@
+[f5]
+10.0.40.76 ansible_user=admin ansible_password=YourPassword  # ← Using IP directly
